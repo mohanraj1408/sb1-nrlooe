@@ -3,3 +3,7 @@ description: "A online skill exchange platform by Innovators "
 baseurl: "/sb1-nrlooe"
 url: "https://mohanraj1408.github.io" 
 theme: jekyll-theme-minimal 
+markdown: kramdown 
+plugins:
+  - jekyll-seo-tag 
+  - jekyll-sitemap
