@@ -1,0 +1,31 @@
+name: Build and Deploy Jekyll
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Build Jekyll site
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: "./src" # Change this to your actual source folder
+          destination: "./_site"
+          verbose: true # Enables more detailed logging
+          token: ${{ secrets.GITHUB_TOKEN }}
